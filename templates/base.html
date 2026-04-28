@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/js/main.js" defer></script>
+</head>
+<body>
+    <header>
+      <div class="navbar">
+        <a href="/" class="logo">ClothesShop</a>
+        <nav class="nav-links">
+          <a href="/">Главная</a>
+          <a href="/catalog/">Каталог</a>
+          <a href="/about/">О нас</a>
+          <a href="/contacts/">Контакты</a>
+        </nav>
+        <form class="search-bar" action="/search/" method="get">
+          <input type="text" name="q" placeholder="Поиск...">
+          <button type="submit">Найти</button>
+        </form>
+        <div class="nav-links">
+          {% if user.is_authenticated %}
+            <span style="margin-right: 10px;">{{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="button">Выйти</a>
+          {% else %}
+            <a href="{% url 'reg' %}" class="button">Регистрация</a>
+            <a href="{% url 'reg' %}" class="button">Войти</a>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+
+<main>
+  {% block aza %}
+  {% endblock %}
+</main>
+
+
+
+
+<footer>
+    <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:18px 30px;">
+        <div>
+            <span style="color:#ff9900;font-weight:bold;font-size:1.3rem;">ClothesShop</span>
+            <span style="color:#aaa;margin-left:18px;">© 2026 Все права защищены</span>
+        </div>
+        <div>
+            <a href="#" style="color:#ff9900;margin-right:16px;">VK</a>
+            <a href="#" style="color:#ff9900;margin-right:16px;">Telegram</a>
+            <a href="#" style="color:#ff9900;">Instagram</a>
+        </div>
+    </div>
+</footer>
+    
+</body>
+</html>

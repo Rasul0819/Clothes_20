@@ -1,0 +1,14 @@
+{% extends 'base.html'  %}
+
+{% block title  %} SEarch {% endblock  %}
+
+{% block aza  %}
+{% for i in clothes  %}
+    <h1>{{ i.title   }}</h1>
+    <p>{{ i.brand   }}</p>
+    {%  empty  %}
+    <p>Ничего не найдено</p>
+{% endfor  %}
+
+
+{% endblock   %}
